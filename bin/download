@@ -12,6 +12,8 @@ mkdir -p "$ASDF_DOWNLOAD_PATH"
 
 platform=$(get_platform)
 
+uname -m
+
 release_file="$ASDF_DOWNLOAD_PATH/${TOOL_NAME}_${ASDF_INSTALL_VERSION}_${platform}_x86_64.tar.gz"
 # Download tar.gz file to the download directory
 download_release "$ASDF_INSTALL_VERSION" "$release_file"
