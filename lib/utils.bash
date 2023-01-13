@@ -2,8 +2,7 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for gokart.
-GH_REPO="https://github.com/gejustin/asdf-gokart"
+GH_REPO="https://github.com/praetorian-inc/gokart"
 TOOL_NAME="gokart"
 TOOL_TEST="gokart version"
 
@@ -12,7 +11,7 @@ fail() {
   exit 1
 }
 
-curl_opts=(-fsSL)
+curl_opts=(-sSL)
 
 # NOTE: You might want to remove this if gokart is not hosted on GitHub releases.
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
@@ -31,8 +30,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if gokart has other means of determining installable versions.
   list_github_tags
 }
 
@@ -40,9 +37,9 @@ download_release() {
   local version filename url
   version="$1"
   filename="$2"
+  platform="$3"
 
-  # TODO: Adapt the release URL convention for gokart
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  url="$GH_REPO/releases/download/v${version}/${TOOL_NAME}_${version}_${platform}_x86_64.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -61,7 +58,6 @@ install_version() {
     mkdir -p "$install_path"
     cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-    # TODO: Assert gokart executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
@@ -71,4 +67,19 @@ install_version() {
     rm -rf "$install_path"
     fail "An error occurred while installing $TOOL_NAME $version."
   )
+}
+
+get_platform() {
+  local os=""
+
+  case "$(uname | tr '[:upper:]' '[:lower:]')" in
+  darwin) os="darwin_macOS" ;;
+  linux) os="linux" ;;
+  *)
+    echo "OS '$(uname | tr '[:upper:]' '[:lower:]')' not supported!" >&2
+    exit 1
+    ;;
+  esac
+
+  echo -n $os
 }
