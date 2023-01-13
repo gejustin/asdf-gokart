@@ -74,7 +74,7 @@ get_platform() {
 
   case "$(uname | tr '[:upper:]' '[:lower:]')" in
   darwin) os="darwin_macOS" ;;
-  linux) arch="linux" ;;
+  linux) os="linux" ;;
   *)
     echo "OS '$(uname | tr '[:upper:]' '[:lower:]')' not supported!" >&2
     exit 1
