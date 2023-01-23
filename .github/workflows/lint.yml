@@ -28,9 +28,11 @@ jobs:
       - name: Install asdf dependencies
         uses: asdf-vm/actions/install@v1
 
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v1
+
       - name: List file to shfmt
         run: shfmt -f .
 
       - name: Run shfmt
         run: scripts/shfmt.bash
-
