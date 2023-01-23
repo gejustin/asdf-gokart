@@ -1,24 +1,21 @@
-<div align="center">
-
 # asdf-gokart [![Build](https://github.com/gejustin/asdf-gokart/actions/workflows/build.yml/badge.svg)](https://github.com/gejustin/asdf-gokart/actions/workflows/build.yml) [![Lint](https://github.com/gejustin/asdf-gokart/actions/workflows/lint.yml/badge.svg)](https://github.com/gejustin/asdf-gokart/actions/workflows/lint.yml)
-
 
 [gokart](https://github.com/gejustin/asdf-gokart) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
-# Contents
+## Contents
 
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Contributing](#contributing)
 - [License](#license)
 
-# Dependencies
+## Dependencies
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
 
-# Install
+## Install
 
 Plugin:
 
@@ -45,12 +42,12 @@ gokart version
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
-# Contributing
+## Contributing
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
 [Thanks goes to these contributors](https://github.com/gejustin/asdf-gokart/graphs/contributors)!
 
-# License
+## License
 
 See [LICENSE](LICENSE) © [Gary Justin](https://github.com/gejustin/)
