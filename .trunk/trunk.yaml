@@ -26,3 +26,8 @@ actions:
     - trunk-fmt-pre-commit
   enabled:
     - trunk-upgrade-available
+merge:
+  required_statuses:
+    - asdf plugin test (ubuntu-latest)
+    - asdf plugin test (macos-latest)
+    - trunk-check
